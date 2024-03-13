@@ -1,21 +1,27 @@
 package hello.core.oreder;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.docount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 @Component
+@Getter
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository;
+     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-@Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
+/*    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    } //테스트용도*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
