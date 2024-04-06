@@ -1,5 +1,8 @@
 package edu.sejong.ex.vo;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Rectangle implements Shape{
 	private int width;
 	private int height;

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +35,7 @@ public class ShapeController {
 	@GetMapping("/circle")
 	public String circle(@RequestParam("radius")int radius ,Model model) {
 		System.out.println("circle()이 찍힘");
-		Circle circle = new Circle();
+		Circle circle = new Circle(radius);
 		circle.setRadius(radius);
 		
 		model.addAttribute("circle",circle);
@@ -47,6 +48,14 @@ public class ShapeController {
 		System.out.println("shape()..");
 		mv.setViewName("/shape/shape");
 		return mv;
+	}
+	
+	@RequestMapping("/rectangle1")
+	public String rectangle1( Rectangle rectangle) {
+		//Grade grade = new Grade(80,97,43);
+		
+		
+		return "/board/rectangle";
 	}
 	
 }

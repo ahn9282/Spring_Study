@@ -1,5 +1,8 @@
 package edu.sejong.ex.vo;
 
+import lombok.Data;
+
+@Data
 public class Circle implements Shape{
 	private int radius;
 	
@@ -10,7 +13,8 @@ public class Circle implements Shape{
 	}
 
 
-	public Circle() {
+	public Circle(int radius) {
+		this.radius = radius;
 	}
 
 
